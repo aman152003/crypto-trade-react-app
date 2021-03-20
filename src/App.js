@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import {Switch,Route} from 'react-router-dom'
+import './App.scss'
+
+import Navbar from './components/Navbar/Navbar'
+import Home from './pages/Home/Home'
+import Trending from './pages/Trending/Trending'
+import Transaction from '../src/pages/Transaction/Transaction'
+import ToggledNav from './components/ToggledNav/ToggledNav'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <ToggledNav />
+      <div className="app">
+        <Navbar />
+          <Switch>
+            <Route exact path="/"><Home /></Route>
+            <Route path="/trending"><Trending /></Route>
+            <Route path="/transaction"><Transaction /></Route>
+          </Switch>
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

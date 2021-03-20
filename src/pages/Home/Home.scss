@@ -1,0 +1,67 @@
+.home{
+    margin-top: 3rem;
+    width: 100%;
+    .home-search{
+        display: none;
+        @media(max-width: 900px){
+            display: block;
+            margin: 0 auto;
+            width: fit-content;
+            margin-bottom: 2rem;
+        }
+    }
+    .crypto-heading{
+        width: 100%;
+        margin-right: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        p{
+            color: var(--Desaturated-Blue);
+            font-size: 0.9rem;
+            letter-spacing: 0.05rem;
+        }
+        .left{
+            width: 5rem;
+            text-align: center;
+        }
+        .right{
+            width: 6rem;
+            text-align: center;
+        }
+        .crypto-heading-left{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 30%;
+        }
+        .crypto-heading-right{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 60%;
+            .empty{
+                width: 7rem;
+            }
+            @media (max-width: 980px){
+                width: 63%;
+            }
+        }
+    }
+
+    @media (max-width: 800px){
+        .crypto-heading{
+            padding: 0 1.5rem;
+            .crypto-heading-left{
+                display: none;
+            }
+            .crypto-heading-right{
+                display: none;
+                .right, .empty{
+                    display: none;
+                }
+            }
+        }
+    }
+}

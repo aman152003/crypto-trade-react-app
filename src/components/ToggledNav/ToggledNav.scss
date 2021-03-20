@@ -1,0 +1,51 @@
+.toggled-nav{
+    background-color: var(--White);
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    padding-top: 3rem;
+    .toggled-nav-logo{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-right: 2.5rem;
+        padding-left: 2rem;
+        @media (max-width: 400px){
+            padding-right: 1rem;
+            padding-left: 0.5rem;
+        }
+        svg{
+            width: 12rem;
+            @media (max-width: 500px){
+                width: 10rem;
+            }
+        }
+        i{
+            font-size: 1.5rem;
+            color: var(--Very-Dark-Blue);
+        }
+    }
+    ul{
+        width: 100%;
+        text-align: left;
+        list-style: none;
+        margin-left: 2.5rem;
+        margin-top: 1.5rem;
+        @media (max-width: 400px){
+            margin-left: 1rem;
+        }
+        li{
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 0.1rem;
+            &:not(:first-child){
+                margin-top: 1.5rem;
+            }
+        }
+        .signup-btn{
+            margin-top: 1.5rem;
+        }
+    }
+}

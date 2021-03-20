@@ -1,0 +1,16 @@
+.button{
+    button{
+        border: none;
+        outline: none;
+        min-width: 7rem;
+        color: var(--White);
+        font-size: 1rem;
+        font-weight: bold;
+        padding: 0.5rem 1.5rem;
+        border-radius: 1.5rem;
+        &:hover{
+            cursor: pointer;
+            opacity: 0.9;
+        }
+    }
+}
