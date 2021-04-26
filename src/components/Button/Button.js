@@ -1,10 +1,10 @@
 import React from 'react'
 import './Button.scss'
 
-function Button({name,bgColor}) {
+function Button({name}) {
     return (
         <div className='button'>
-            <button style={{backgroundColor: `${bgColor}` }}>{name}</button>
+            <button>{name}</button>
         </div>
     )
 }

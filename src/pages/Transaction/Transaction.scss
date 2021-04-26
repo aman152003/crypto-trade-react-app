@@ -1,5 +1,5 @@
 .transaction{
-    margin-top: 2rem;
+    margin-top: 3rem;
     .chart{
         height: 60vh;
     }
@@ -31,31 +31,34 @@
                 justify-content: space-around;
                 margin-right: -4rem;
                 margin-top: 2rem;
+                .left{
+                    margin-right: 0.5rem;
+                }
             }
             .price{
                 width: 350px;
+                @media (max-width:700px){
+                    width: fit-content;
+                }
             }
            .market-cap{
                 width: 350px;
+                @media (max-width:700px){
+                    width: fit-content;
+                }
            }
            .supply{
-            width: 350px;
-            }
-            .value{
-                margin-left: 10px;
+                width: 350px;
+                @media (max-width:700px){
+                    width: fit-content;
+                }
             }
            .all-time-change{
                 width: 350px;
+                @media (max-width:700px){
+                    width: fit-content;
+                }
            }
-        }
-        .transaction-buttons{
-            margin-top: 3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            .sell-btn{
-                margin-left: 1rem;
-            }
         }
     }
 
@@ -68,28 +71,24 @@
             text-align: center;
             margin-top: 1rem;
             p{
-                @media(max-width: 400px){
+                @media(max-width: 450px){
                     font-size: 0.9rem;
                 }
             }
             .row{
+                display: flex;
                 flex-direction: column;
+                margin-top: 2rem;
                 margin-left: -4rem;
-                margin-top: 3rem;
-            }
-            .price{
-                width: 350px;
-            }
-            .market-cap{
-                width: 350px;
-                margin-top: 3rem;
-            }
-            .all-time-change{
-                width: 350px;
-                margin-top: 3rem;
-            }
-            .supply{
-                width: 350px;
+                .left{
+                    margin-right: 1rem;
+                }
+                .market-cap{
+                    margin-top: 2rem;
+                }
+                .all-time-change{
+                    margin-top: 2rem;
+                }
             }
         }
     }

@@ -1,7 +1,8 @@
 import React,{useContext} from 'react'
-import './Search.scss'
 
+import './Search.scss'
 import {AppContext} from '../AppContext'
+import searchIcon from '../../assets/images/Search.svg'
 
 function Search() {
     const {setSearchTerm} = useContext(AppContext);
@@ -11,7 +12,7 @@ function Search() {
     return (
         <div className='search'>
             <input onChange={onChange} type='text' placeholder='search...' />
-            <button><i class="fas fa-search"></i></button>
+            <button><img src={searchIcon} /></button>
         </div>
     )
 }

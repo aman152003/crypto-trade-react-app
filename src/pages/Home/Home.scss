@@ -3,11 +3,11 @@
     width: 100%;
     .home-search{
         display: none;
-        @media(max-width: 900px){
+        @media(max-width: 800px){
             display: block;
             margin: 0 auto;
             width: fit-content;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
     }
     .crypto-heading{
@@ -47,6 +47,16 @@
             @media (max-width: 980px){
                 width: 63%;
             }
+        }
+    }
+    .pagination-btns{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2rem;
+        button{
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
         }
     }
 

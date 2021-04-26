@@ -11,17 +11,14 @@
         background-color: var(--White);
         color: black;
         padding: 0.5rem;
-        border: none;
-        outline: none;
-        cursor: pointer;
     }
 
-    @media (max-width: 900px){
+    @media (max-width: 800px){
         input{
             width: 20rem;
         }
     }
-    @media (max-width: 400px){
+    @media (max-width: 450px){
         input{
             width: 220px;
         }

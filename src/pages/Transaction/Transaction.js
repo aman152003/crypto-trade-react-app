@@ -1,31 +1,47 @@
 import React,{useState,useEffect,useContext} from 'react'
 import {Line} from 'react-chartjs-2'
-import './Transaction.scss'
 
+import './Transaction.scss'
 import {AppContext} from '../../components/AppContext'
-import Button from '../../components/Button'
 import Loading from '../../components/Loading/Loading'
 
 function Transaction() {
+
     const [chartData, setChartData] = useState([]);
-    const [data1,setData1] = useState([]);
+    const [cryptoData,setCryptoData] = useState([]);
     const {id} = useContext(AppContext)
 
-    const fetchChartData = async() => {
+    const fetchData = async() => {
         const result = await fetch(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=7&interval=daily`)
         const data = await result.json()
         setChartData(data)
 
         const result1 = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${id}&order=market_cap_desc&sparkline=false`)
         const response = await result1.json()
-        setData1(response[0])
+        setCryptoData(response[0])
     }
 
     useEffect(()=>{
-        fetchChartData()
+        fetchData()
     },[])
+
+    const getValue = (value,noValue) => {
+        if(value === null || value === undefined){
+            return noValue
+        }else{
+            return value.toLocaleString()
+        }
+    }
     
-    if(chartData.length === 0 || data1.length === 0){
+    const getDate = (date,noDate) => {
+        if(date === null || date === undefined){
+            return noDate
+        }else{
+            return date.slice(0,10)
+        }
+    }
+    
+    if(chartData.length === 0 || cryptoData.length === 0){
         return  <Loading />
     }
     else{
@@ -53,53 +69,45 @@ function Transaction() {
                 </div>
                 <div className="crypto-data">
                     <div className="name">
-                        <img src={data1.image} alt="bitcoin" />
-                        <h2>{data1.name} ({data1.symbol.toUpperCase()})</h2>
+                        <img src={cryptoData.image} alt="bitcoin" />
+                        <h2>{cryptoData.name} ({cryptoData.symbol.toUpperCase()})</h2>
                     </div>
                     <div className="extra-data">
                         <div className="row">
                             <div className="price">
                                 <h3>Price</h3>
-                                <p>Current Price : <span className="value">{data1.current_price || 'no data'}</span></p>
-                                <p>24h High : <span className="value">{data1.high_24h || 'no data'}</span></p>
-                                <p>24h Low :  <span className="value">{data1.low_24h || 'no data'}</span></p>
-                                <p>24h Price Change : <span className="value">{data1.price_change_24h || 'no data'}</span></p>
-                                <p>24h Price Change Percentage : <span className="value">{data1.price_change_percentage_24h || 'no data'}</span></p>
+                                <p><span className="left">24h High :</span> {getValue(cryptoData.high_24h,'no data')}</p>
+                                <p><span className="left">24h low :</span> {getValue(cryptoData.low_24h,'no data')}</p>
+                                <p><span className="left">Current Price :</span> {getValue(cryptoData.current_price,'no data')}</p>
+                                <p><span className="left">24h Price Change :</span> {getValue(cryptoData.price_change_24h,'no data')}</p>
+                                <p><span className="left">24h Price Change % :</span> {cryptoData.price_change_percentage_24h || 'no data'}</p>
                             </div>
                             <div className="market-cap">
                                 <h3>Market Cap</h3>
-                                <p>Market Cap Rank : <span className="value">{data1.market_cap_rank || 'no data'}</span></p>
-                                <p>Market Cap : <span className="value">{data1.market_cap || 'no data'}</span></p>
-                                <p>Fully Diluted Valuation : <span className="value">{data1.fully_diluted_valuation || 'no data'}</span></p>
-                                <p>24h Market CapChange : <span className="value">{data1.market_cap_change || 'no data'}</span></p>
-                                <p>24h Market Cap Change % : <span className="value">{data1.market_cap_change_percentage_24h || 'no data'}</span></p>
-                                <p>Total Volume : <span className="value">{data1.total_volume || 'no data'}</span></p>
+                                <p><span className="left">Market Cap :</span> {getValue(cryptoData.market_cap,'no data')}</p>
+                                <p><span className="left">Total Volume :</span> {getValue(cryptoData.total_volume,'no data')}</p>
+                                <p><span className="left">Market Cap Rank :</span> {cryptoData.market_cap_rank || 'no data'}</p>
+                                <p><span className="left">Fully Diluted Valuation :</span> {getValue(cryptoData.fully_diluted_valuation,'no data')}</p>
+                                <p><span className="left">24h Market Cap Change :</span> {getValue(cryptoData.market_cap_change,'no data')}</p>
+                                <p><span className="left">24h Market Cap Change % :</span> {cryptoData.market_cap_change_percentage_24h || 'no data'}</p>    
                             </div>
                         </div>
                         <div className="row">
                             <div className="supply">
                                 <h3>Supply</h3>
-                                <p>Total Supply : <span className="value">{data1.total_supply || 'no data'}</span></p>
-                                <p>Max Supply : <span className="value">{data1.max_supply || 'no data'}</span></p>
-                                <p>Circulating Supply : <span className='value'>{data1.circulating_supply || 'no data'}</span></p>
+                                <p><span className="left">Max Supply :</span> {getValue(cryptoData.max_supply,'no data')}</p>
+                                <p><span className="left">Total Supply :</span> {getValue(cryptoData.total_supply,'no data')}</p>
+                                <p><span className="left">Circulating Supply :</span> {getValue(cryptoData.circulating_supply,'no data')}</p>
                             </div>
                             <div className="all-time-change">
                                 <h3>All Time Change</h3>
-                                <p>ATH : <span className='value'>{data1.ath || 'no data'}</span></p>
-                                <p>ATH Change % : <span className='value'>{data1.ath_change_percentage || 'no data'}</span></p>
-                                <p>ATH Date : <span className='value'>{data1.ath_date || 'no data'}</span></p>
-                                <p>ATL : <span className='value'>{data1.atl || 'no data'}</span></p>
-                                <p>ATL Change % : <span className='value'>{data1.atl_change_percentage || 'no data'}</span></p>
-                                <p>ATL Date : <span className='value'>{data1.atl_date || 'no data'}</span></p>
+                                <p><span className="left">ATH :</span> {getValue(cryptoData.ath,'no data')}</p>
+                                <p><span className="left">ATL :</span> {getValue(cryptoData.atl,'no data')}</p>
+                                <p><span className="left">ATH Date :</span> {getDate(cryptoData.ath_date,'no data')}</p>
+                                <p><span className="left">ATL Date :</span> {getDate(cryptoData.atl_date,'no data')}</p>
+                                <p><span className="left">ATH Change % :</span> {cryptoData.ath_change_percentage || 'no data'}</p>
+                                <p><span className="left">ATL Change % :</span> {cryptoData.atl_change_percentage || 'no data'}</p>
                             </div>
-                        </div>
-                    </div>
-                    <div className="transaction-buttons">
-                        <div className="buy-btn">
-                            <Button name="Buy" bgColor='var(--Lime-Green)' />
-                        </div>
-                        <div className="sell-btn">
-                            <Button name="Sell" bgColor='var(--Lime-Green)' />
                         </div>
                     </div>
                 </div>

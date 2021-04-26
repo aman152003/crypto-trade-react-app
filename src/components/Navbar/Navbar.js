@@ -1,9 +1,9 @@
 import React,{useContext} from 'react'
 import {Link} from 'react-router-dom'
-import './Navbar.scss'
 
+import './Navbar.scss'
 import Search from '../Search/Search'
-import Button from '../Button'
+import HamburgerIcon from '../../assets/images/Hamburger.svg'
 import {AppContext} from '../AppContext'
 import Logo from '../../assets/images/Logo.svg'
 
@@ -23,11 +23,9 @@ function Navbar() {
                     <div className="navbar-search">
                         <Search />
                     </div>
-                    <li><Link style={{textDecoration: 'none',color: 'var(--White)'}} to="/sign-in">Sign In</Link></li>
-                    <Button bgColor='var(--Light-Blue)' name='Sign Up' />
                 </div>
                 <div onClick={()=>{setIsNavToggled(!isNavToggled)}} className='navbar-toggle'>
-                    <i class="fas fa-bars"></i> 
+                    <img src={HamburgerIcon} />
                 </div>
             </nav>
         </div>

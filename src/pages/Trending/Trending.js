@@ -22,7 +22,6 @@ function Trending() {
 
     useEffect(()=>{
         fetchTrendingList()
-        setIsNavToggled(false);
     },[])
     if(trendingList.length === 0){
         return <Loading />

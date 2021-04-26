@@ -1,11 +1,11 @@
 import React,{useContext} from 'react'
 import {Link} from 'react-router-dom'
-import './TrendingCrypto.scss'
 
+import './TrendingCrypto.scss'
 import {AppContext} from '../AppContext'
 
 function TrendingCrypto(props) {
-    const {id,setID} = useContext(AppContext);
+    const {setID} = useContext(AppContext);
     return (
         <Link style={{textDecoration: 'none'}} to='/transaction'>
             <div onClick={()=>{setID(props.id)}} >
