@@ -6,11 +6,12 @@ import {AppContext} from '../AppContext'
 import Button from '../Button/Button'
 
 function Crypto(props) {
-    const {setID} = useContext(AppContext);
+    const {setID,setSearchTerm} = useContext(AppContext);
     const imageURL = props.image.replace('large','small')
     return (
         <Link to='/transaction' style={{textDecoration: 'none'}}>
-            <div onClick={()=>{setID(props.id)}} className="crypto">
+            <div onClick={()=>{setID(props.id)
+                setSearchTerm('')}} className="crypto">
                 <div className="crypto-left">
                     <img className='left' src={imageURL} alt='crypto' />
                     <p className='left symbol'>{props.symbol.toUpperCase()}</p>

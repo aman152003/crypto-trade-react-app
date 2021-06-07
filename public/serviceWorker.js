@@ -1,27 +1,45 @@
-const CacheName = 'version-1'
-const CachedAssets = [
-    '/offline'
+const CACHE_NAME = "version-1"
+const urlsToCache = [
+  '/offline'
 ]
-self.addEventListener('install', e =>{
-    e.waitUntil(
-        caches.open(CacheName)
-          .then((cache)=>{
-            console.log('Opened cache')
-            return cache.addAll(CachedAssets)
-        })
+
+const self = this;
+
+// Install SW
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+    .then((cache) => {
+      console.log('Opened cache')
+      return cache.addAll(urlsToCache)
+    })
+  )
+})
+
+// Listen for requests
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request)
+      .then(() => {
+        return fetch(event.request) 
+        .catch(() => caches.match('/offline'))
+      })
     )
 })
 
-self.addEventListener('fetch', e => {
-    e.respondWith(
-        caches.match(e.request)
-          .then((response)=>{
-            if(response){
-              return response
-            }
-            return fetch(e.request)
-          }
-        )
-    )
-})
+// Activate the SW
+self.addEventListener('activate', (event) => {
+  const cacheWhitelist = []
+  cacheWhitelist.push(CACHE_NAME)
 
+  event.waitUntil(
+    caches.keys().then((cacheNames) => Promise.all(
+      cacheNames.map((cacheName) => {
+        if(!cacheWhitelist.includes(cacheName)){
+          return caches.delete(cacheName)
+        }
+      })
+    ))
+            
+  )
+})
