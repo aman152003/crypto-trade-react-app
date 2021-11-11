@@ -1,0 +1,82 @@
+.crypto {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--Dark-Desaturated-Blue);
+  padding: 0.5rem 1.5rem;
+  margin-top: 0.5rem;
+  color: var(--White);
+  .left {
+    width: 5rem;
+  }
+  .right {
+    width: 6rem;
+  }
+  .crypto-left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 30%;
+    img {
+      width: 40px;
+    }
+    .symbol {
+      margin-left: 3rem;
+      @media (max-width: 980px) {
+        margin-left: 2rem;
+      }
+    }
+  }
+  .crypto-right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    @media (max-width: 980px) {
+      width: 63%;
+    }
+    .rank {
+      @media (max-width: 980px) {
+        margin-right: 1rem;
+      }
+    }
+  }
+
+  @media (max-width: 800px) {
+    .crypto-left {
+      width: fit-content;
+    }
+    .crypto-right {
+      width: fit-content;
+      .right,
+      .rank,
+      .button {
+        display: none;
+      }
+      .change {
+        display: block;
+        margin-left: auto;
+        width: fit-content;
+        text-align: end;
+      }
+    }
+  }
+  @media (max-width: 450px) {
+    padding: 0.5rem;
+    p {
+      font-size: 0.9rem;
+    }
+    .crypto-left {
+      img {
+        width: 30px;
+      }
+      .symbol {
+        margin-left: 1rem;
+      }
+      .price {
+        margin-left: -1.5rem;
+      }
+    }
+  }
+}

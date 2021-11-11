@@ -1,0 +1,85 @@
+.trending-crypto {
+  display: flex;
+  justify-content: space-between;
+  width: fit-content;
+  background-color: var(--Dark-Desaturated-Blue);
+  margin-top: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  p {
+    color: var(--White);
+  }
+  .trending-crypto-left {
+    display: flex;
+    align-items: center;
+    img {
+      width: 40px;
+    }
+    .name {
+      margin-left: 1rem;
+      width: 13rem;
+    }
+  }
+  .trending-crypto-right {
+    display: flex;
+    align-items: center;
+    .symbol {
+      width: 4rem;
+    }
+    .market-cap-rank {
+      width: 4rem;
+      text-align: right;
+    }
+  }
+
+  @media (max-width: 470px) {
+    padding: 0.5rem;
+    .trending-crypto-left {
+      .name {
+        width: 12rem;
+      }
+    }
+    .trending-crypto-right {
+      .market-cap-rank {
+        width: 3rem;
+      }
+    }
+  }
+  @media (max-width: 400px) {
+    p {
+      font-size: 0.9rem;
+    }
+    .trending-crypto-left {
+      img {
+        width: 30px;
+      }
+      .name {
+        margin-left: 0.5rem;
+        width: 9rem;
+      }
+    }
+    .trending-crypto-right {
+      .symbol {
+        width: 3rem;
+      }
+      .market-cap-rank {
+        width: 2.2rem;
+      }
+    }
+  }
+  @media (max-width: 300px) {
+    .trending-crypto-left {
+      .name {
+        width: 8rem;
+      }
+    }
+    .trending-crypto-right {
+      .symbol {
+        width: 2.6rem;
+        margin-left: 0.5rem;
+      }
+      .market-cap-rank {
+        width: 2rem;
+      }
+    }
+  }
+}

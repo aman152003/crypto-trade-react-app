@@ -1,0 +1,44 @@
+.toggled-nav {
+  background-color: var(--White);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  padding: 1rem 1.5rem 0rem 1.5rem;
+  @media (max-width: 450px) {
+    padding: 1rem 0.5rem 0rem 0.5rem;
+  }
+  .toggled-nav-logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    svg {
+      width: 10rem;
+    }
+    i {
+      font-size: 1.5rem;
+      color: var(--Very-Dark-Blue);
+    }
+  }
+  ul {
+    width: 100%;
+    text-align: left;
+    margin-top: 1.5rem;
+    li {
+      font-size: 1.2rem;
+      font-weight: bold;
+      letter-spacing: 0.1rem;
+      &:not(:first-child) {
+        margin-top: 1.5rem;
+      }
+    }
+  }
+  .copyright {
+    p {
+      color: var(--Very-Dark-Blue);
+      margin-bottom: 1rem;
+    }
+  }
+}
