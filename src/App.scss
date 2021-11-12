@@ -8,7 +8,6 @@
 }
 
 // Global styles
-
 ul {
   list-style: none;
 }
@@ -25,10 +24,16 @@ button {
   }
 }
 //-- Global styles
-
+html::-webkit-scrollbar {
+  display: none;
+}
 body {
   background-color: var(--Very-Dark-Blue);
   color: var(--White);
+}
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 .app-container {
   min-height: 100vh;
