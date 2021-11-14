@@ -3,7 +3,6 @@ import "./Trending.scss";
 
 import TrendingCrypto from "../../components/TrendingCrypto/TrendingCrypto";
 import Loading from "../../components/Loading/Loading";
-import { AppContext } from "../../components/AppContext";
 
 function Trending() {
   const [trendingList, setTrendingList] = useState([]);

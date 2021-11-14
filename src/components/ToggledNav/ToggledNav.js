@@ -37,7 +37,7 @@ function ToggledNav() {
                 />
               </svg>
               <div onClick={() => setIsNavToggled(false)}>
-                <img src={CloseIcon} />
+                <img src={CloseIcon} alt="close" />
               </div>
             </div>
             <ul>
